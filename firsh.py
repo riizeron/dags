@@ -11,7 +11,7 @@ default_args = {
     dag_id='simple_taskflow_dag',
     default_args=default_args,
     description='Простой DAG с TaskFlow API',
-    schedule_interval='@daily',
+    schedule='@daily',
     start_date=datetime(2026, 1, 27),
     catchup=False,
 )
