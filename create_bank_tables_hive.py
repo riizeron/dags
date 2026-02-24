@@ -20,15 +20,16 @@ dag = DAG(
 
 create_tables_task = LivyOperator(
     task_id='create_iceberg_tables_hive',
-    file='hdfs://master.hadoop.hse.edu:9820/user/spark/create_iceberg_tables.py',
+    file='hdfs://master.hadoop.hse.edu:9820/user/spark/create_hive_tables.py',
     livy_conn_id='livy',
     polling_interval=1,
     conf={
-        'spark.sql.catalog.iceberg': 'org.apache.iceberg.spark.SparkCatalog',
-        'spark.sql.catalog.iceberg.type': 'hive',
-        'spark.sql.catalog.iceberg.uri': 'thrift://master.hadoop.hse.edu:9083',
+        # "spark.sql.warehouse.dir": "hdfs://master.hadoop.hse.edu:9820/user/spark/warehouse"
+        # 'spark.sql.catalog.iceberg': 'org.apache.iceberg.spark.SparkCatalog',
+        # 'spark.sql.catalog.iceberg.type': 'hive',
+        # 'spark.sql.catalog.iceberg.uri': 'thrift://master.hadoop.hse.edu:9083',
+        # 'spark.sql.catalog.iceberg.warehouse': 'hdfs://master.hadoop.hse.edu:9820/user/iceberg/warehouse',
     },
-    jars=["file:///opt/iceberg/iceberg-spark-runtime-4.0_2.13-1.10.1.jar"],
     py_files=[],
     driver_memory='512m',
     executor_memory='512m',
